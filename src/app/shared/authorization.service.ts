@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 const poolData = {
   UserPoolId: 'us-east-1_dEPYViRBr', // Your user pool id here
-  ClientId: '19vbljuhurhatglavpe5fidohq' // Your client id here  
+  ClientId: '19vbljuhurhatglavpe5fidohq' // Your client id here
 };
 
 const userPool = new CognitoUserPool(poolData);
@@ -26,13 +26,13 @@ export class AuthorizationService {
     };
 
     const conveniado = {
-      Name: 'conveniado',
+      Name: 'custom:conveniado',
       Value: parceiro,
     }
 
     const attributeProfile = new CognitoUserAttribute(profile);
     const attributeConveniado = new CognitoUserAttribute(conveniado);
-    
+
     attributeList.push(attributeProfile, attributeConveniado);
 
     return Observable.create(observer => {
@@ -70,7 +70,7 @@ export class AuthorizationService {
     });
   }
 
-  signIn(email, password) { 
+  signIn(email, password) {
 
     const authenticationData = {
       Username : email,
@@ -83,12 +83,12 @@ export class AuthorizationService {
       Pool : userPool
     };
     const cognitoUser = new CognitoUser(userData);
-    
+
     return Observable.create(observer => {
 
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
-          
+
           //console.log(result);
           observer.next(result);
           observer.complete();
@@ -101,7 +101,7 @@ export class AuthorizationService {
     });
   }
 
-  isLoggedIn() {    
+  isLoggedIn() {
     return userPool.getCurrentUser() != null;
   }
 

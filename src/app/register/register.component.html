@@ -8,7 +8,7 @@
           <input type="email" name="email" id="email" ngModel class="form-control">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Senha</label>
           <input type="password" name="password" id="password" ngModel class="form-control" required>
         </div>
         <div class="form-group">
@@ -21,28 +21,28 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="conveniado">Conveniado</label>
-          <select type="conveniado" name="conveniado" id="conveniado" ngModel class="form-control">
+          <label for="parceiro">Conveniado</label>
+          <select type="parceiro" name="parceiro" id="parceiro" ngModel class="form-control">
             <option selected>Selecione o Conveniado</option>
             <option value="papa">Papa</option>
             <option value="boxter">Boxter</option>
             <option value="shell">Shell</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Registro</button>
       </form>
     </div>
   </div>
   <br/>
   <div *ngIf="confirmCode" class="row message-row">
-    <h3>Please check your email for the validation code and enter it here:</h3>
+    <h3>Por favor verifique seu email, e nos informe o código de verificação:</h3>
     <div class="col-lg-4">
       <form (ngSubmit)="validateAuthCode(codeform)" #codeform="ngForm">
         <div class="form-group">
           <label for="code">Code</label>
           <input type="text" name="code" id="code" ngModel class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Validate Code</button>
+        <button type="submit" class="btn btn-primary">Código Verificação</button>
       </form>
     </div>
   </div>

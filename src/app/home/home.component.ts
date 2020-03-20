@@ -9,6 +9,7 @@ import { Http, Headers } from "@angular/http";
 })
 export class HomeComponent implements OnInit {
   bAuthenticated = false;
+  user;
 
   constructor(private http: Http, private auth: AuthorizationService) { }
 
@@ -17,8 +18,10 @@ export class HomeComponent implements OnInit {
     if (authenticatedUser == null) {
       return;
     }
+    this.user = JSON.stringify(authenticatedUser)
+    console.log(this.user);
     this.bAuthenticated = true;
-    
+
   }
 
 }

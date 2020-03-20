@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent { 
+export class RegisterComponent {
   confirmCode: boolean = false;
   codeWasConfirmed: boolean = false;
   error: string = "";
-  
+
   constructor(private auth: AuthorizationService,
               private _router: Router) { }
 
@@ -23,9 +23,9 @@ export class RegisterComponent {
     const email = form.value.email;
     const password = form.value.password;
     const role = form.value.role;
-    const conveniado = form.value.conveniado;
-    this.auth.register(email, password, role, conveniado).subscribe(
-      (data) => {        
+    const parceiro = form.value.parceiro;
+    this.auth.register(email, password, role, parceiro).subscribe(
+      (data) => {
         this.confirmCode = true;
       },
       (err) => {
@@ -37,7 +37,7 @@ export class RegisterComponent {
 
   validateAuthCode(form: NgForm) {
     const code = form.value.code;
-    
+
     this.auth.confirmAuthCode(code).subscribe(
       (data) => {
         //this._router.navigateByUrl('/');
