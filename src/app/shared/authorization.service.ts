@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import {AuthenticationDetails, CognitoUser, CognitoUserPool, CognitoUserAttribute} from 'amazon-cognito-identity-js';
 import { Observable } from 'rxjs/Observable';
+import {CognitoIdentityCredentials} from 'aws-sdk';
 
 const poolData = {
   UserPoolId: 'us-east-1_dEPYViRBr', // Your user pool id here
   ClientId: '19vbljuhurhatglavpe5fidohq' // Your client id here
 };
+
+const credenciais = new CognitoIdentityCredentials({
+    IdentityPoolId: 'us-east-1:8cd295f0-8cdd-4e4d-8cde-5cea08d67185',
+});
+
 
 const userPool = new CognitoUserPool(poolData);
 
