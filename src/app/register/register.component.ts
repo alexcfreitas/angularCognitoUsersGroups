@@ -24,26 +24,26 @@ export class RegisterComponent {
     const password = form.value.password;
     const role = form.value.role;
     const parceiro = form.value.parceiro;
-    this.auth.register(email, password, role, parceiro).subscribe(
+    this.auth.register(email, password, role, parceiro).then(
       (data) => {
         this.confirmCode = true;
-      },
-      (err) => {
+      })
+      .catch((err) => {
         console.log(err);
         this.error = "Registration Error has occurred";
-      }
-    );
+      });
   }
 
   validateAuthCode(form: NgForm) {
     const code = form.value.code;
 
-    this.auth.confirmAuthCode(code).subscribe(
+    this.auth.confirmAuthCode(code).then(
       (data) => {
         //this._router.navigateByUrl('/');
         this.codeWasConfirmed = true;
         this.confirmCode = false;
-      },
+      },)
+      .catch(
       (err) => {
         console.log(err);
         this.error = "Confirm Authorization Error has occurred";

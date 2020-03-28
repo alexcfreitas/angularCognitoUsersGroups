@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
       return;
     }
     this.user = JSON.stringify(authenticatedUser)
-    console.log(this.user);
+    // console.log(this.user);
     this.bAuthenticated = true;
 
   }

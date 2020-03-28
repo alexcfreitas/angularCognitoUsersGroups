@@ -3,7 +3,7 @@ import { AuthorizationService} from "../shared/authorization.service";
 import {Http, Headers} from "@angular/http";
 
 export class PersonWithCars {
-  constructor(public name: string, public age: number) { }  
+  constructor(public name: string, public age: number) { }
 }
 
 @Component({
@@ -22,34 +22,31 @@ export class RestApiComponent implements OnInit {
     if (authenticatedUser == null) {
       return;
     }
-    authenticatedUser.getSession( (err, session) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      const token = session.getIdToken().getJwtToken();      
-      const headers = new Headers();
-      headers.append('Authorization', token);      
+
+    this.auth.getAuthenticatedUser().then(session => {
+      let token = session.getIdToken().getJwtToken();
+      console.log('TESTE AUTHORIZATION -> ',`Bearer ${token}`);
       var that = this;
-      this.auth.getAuthenticatedUser().getSession((err, session) => {
-        if (err) {
-          console.log(err);
-          return;
+      const headers = new Headers();
+      // headers.append('Content-Type', 'application/json');
+      // headers.append('Accept', 'application/json');
+
+      // headers.append('Access-Control-Allow-Origin', 'https://3xh1ivz0bj.execute-api.us-east-1.amazonaws.com');
+      // headers.append('Access-Control-Allow-Credentials', 'true');
+
+      // headers.append('GET', 'POST', 'OPTIONS');
+      headers.append('Authorization', `Bearer ${token}`);
+      this.http.get('/api/v1/grupos', { headers: headers })
+        .subscribe(
+        response => {
+          that._data = response.json();
+        },
+        error => {
+          console.log(error);
         }
-        const token = session.getIdToken().getJwtToken();        
-        const headers = new Headers();
-        headers.append('Authorization', token);        
-        this.http.get('put your api gateway endpoint here', { headers: headers })
-          .subscribe(
-          response => {           
-            that._data = response.json();
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      });
-    });
+      );
+
+    }).catch(err => console.log(err));
   }
 
 }

@@ -5,7 +5,8 @@
     </div>
     <ul class="nav navbar-nav">
       <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
-      <li routerLinkActive="active"><a *ngIf="_auth.isLoggedIn()" routerLink="/restapi">Transacao</a></li>
+      <li routerLinkActive="active"><a *ngIf="_auth.isLoggedIn()" routerLink="/restapi">Grupos</a></li>
+      <li routerLinkActive="active"><a *ngIf="_auth.isLoggedIn()" routerLink="/usuarios">Usuarios</a></li>
       <li routerLinkActive="active"><a *ngIf="!_auth.isLoggedIn()" routerLink="/register">Registro</a></li>
       <li  routerLinkActive="active"><a *ngIf="!_auth.isLoggedIn()" routerLink="/login">Login</a></li>
       <li><a *ngIf="_auth.isLoggedIn()" href="javascript:void(0)" (click)="doLogout()">Logout</a></li>

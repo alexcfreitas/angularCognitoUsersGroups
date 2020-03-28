@@ -20,12 +20,12 @@ export class LoginComponent {
 
     const email = form.value.email;
     const password = form.value.password;
-    
-    this.auth.signIn(email, password).subscribe((data) => {
+
+    this.auth.signIn(email, password).then((data) => {
       console.log('Usuario Logado ----> ',data)
       this._router.navigateByUrl('/');
-    }, (err)=> {
+    }).catch((err)=> {
       this.emailVerificationMessage = true;
-    });   
+    });
   }
 }
