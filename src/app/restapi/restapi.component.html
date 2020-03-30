@@ -4,29 +4,29 @@
     border-spacing: 50px 0;
   }
 
-  td {
+  td , h2{
     padding: 10px 0;
   }
 </style>
 <section>
-  <h2>Rest Api Output</h2>
+  <h2  align="center" >Lista de Grupos</h2>
   <table align="center">
     <thead>
-      <tr>        
-        <th>Name</th>
-        <th>Age</th>
-        <th>Cars</th>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Precedente</th>
+        <th>Grupo de Usuários Vinculado</th>
+        <th>Políticas e Permissões</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let person of _data">        
-        <td>{{person.name}}</td>
-        <td>{{person.age}}</td>        
-        <td>
-          <div *ngFor="let car of person.cars">
-            {{car}}
-          </div>
-        </td>
+      <tr *ngFor="let group of _data">
+        <td>{{group.GroupName}}</td>
+        <td>{{group.Description}}</td>
+        <td>{{group.Precedence}}</td>
+        <td>{{group.UserPoolId}}</td>
+        <td>{{group.RoleArn}}</td>
       </tr>
     </tbody>
   </table>

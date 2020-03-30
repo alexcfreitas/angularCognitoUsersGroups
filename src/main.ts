@@ -26,10 +26,12 @@ Amplify.configure({
     endpoints: [
         {
             name: "portalConveniados",
+            // endpoint: "https://3xh1ivz0bj.execute-api.us-east-1.amazonaws.com/v1",
             endpoint: "http://localhost:4200/api",
             // custom_header: async () => {
             //   return {
-            //     "Access-Control-Allow-Origin": "*",
+            //     // "Access-Control-Allow-Origin": "*",
+            //     // "Content-Type": "application/json",
             //     // "Access-Control-Allow-Credentials": "true"
             //   }
             // },

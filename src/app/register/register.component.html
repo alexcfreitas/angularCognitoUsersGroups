@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-lg-4">
       <form (ngSubmit)="register(regform)" #regform="ngForm">
+
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" name="email" id="email" ngModel class="form-control">
@@ -24,9 +25,9 @@
           <label for="parceiro">Conveniado</label>
           <select type="parceiro" name="parceiro" id="parceiro" ngModel class="form-control">
             <option selected>Selecione o Conveniado</option>
-            <option value="papa">Papa</option>
-            <option value="boxter">Boxter</option>
-            <option value="shell">Shell</option>
+            <option value="Posto_Papa">Papa</option>
+            <option value="Posto_Boxter">Boxter</option>
+            <option value="Posto_Shell">Shell</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary">Registro</button>
@@ -47,6 +48,6 @@
     </div>
   </div>
   <div *ngIf="codeWasConfirmed" class="row message-row">
-    <h3>Verification Code was confirmed, please click <a routerLink="/login">here</a> to login</h3>
+    <h3>Código Confirmado, por favor clique <a routerLink="/login">aqui</a> para logar</h3>
   </div>
 </div>

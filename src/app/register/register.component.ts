@@ -30,7 +30,7 @@ export class RegisterComponent {
       })
       .catch((err) => {
         console.log(err);
-        this.error = "Registration Error has occurred";
+        this.error = "Ocorreu um erro ao Criar um Usuário.";
       });
   }
 
@@ -46,7 +46,7 @@ export class RegisterComponent {
       .catch(
       (err) => {
         console.log(err);
-        this.error = "Confirm Authorization Error has occurred";
+        this.error = "Ocorreu Algum erro ao confirmar o codigo.";
       });
   }
 }

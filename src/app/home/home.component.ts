@@ -9,18 +9,23 @@ import { Http, Headers } from "@angular/http";
 })
 export class HomeComponent implements OnInit {
   bAuthenticated = false;
+  authenticatedUser;
   user;
 
   constructor(private http: Http, private auth: AuthorizationService) { }
 
   ngOnInit() {
-    var authenticatedUser = this.auth.getAuthenticatedUser();
-    if (authenticatedUser == null) {
-      return;
-    }
-    this.user = JSON.stringify(authenticatedUser)
-    // console.log(this.user);
-    this.bAuthenticated = true;
+
+    this.auth.getAuthenticatedUser().then(user => {
+      if (user == null) {
+        return;
+      }
+      this.authenticatedUser = user;
+      this.user = this.authenticatedUser;
+      this.bAuthenticated = true;
+      console.log('USER __ ',this.user);
+      return this.user;
+    }).catch(err => console.log(err));
 
   }
 
